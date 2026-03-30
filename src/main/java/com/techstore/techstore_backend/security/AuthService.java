@@ -77,6 +77,7 @@ public class AuthService {
         UsuarioResponseDTO userDto = UsuarioResponseDTO.builder()
                 .email(user.getEmail())
                 .nombre(user.getNombre())
+                .genero(user.getGenero().name())
                 .rol(user.getRol().name())
                 .build();
 

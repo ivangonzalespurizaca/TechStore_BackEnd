@@ -12,6 +12,5 @@ public class CarritoRequestDTO {
     private Long productoId;
 
     @NotNull(message = "La cantidad es obligatoria")
-    @Min(value = 1, message = "La cantidad mínima debe ser 1")
     private Integer cantidad;
 }

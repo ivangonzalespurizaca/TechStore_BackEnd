@@ -41,7 +41,13 @@ public class CarritoServiceImpl implements CarritoService{
         if (carritoExistente.isPresent()) {
             // Si ya existe, solo aumentamos la cantidad
             Carrito item = carritoExistente.get();
-            item.setCantidad(item.getCantidad() + dto.getCantidad());
+            int cantidadFinal = item.getCantidad() + dto.getCantidad();
+
+            if (cantidadFinal > item.getProducto().getStock()) {
+                throw new RuntimeException("No hay suficiente stock disponible");
+            }
+
+            item.setCantidad(cantidadFinal);
             carritoRepository.save(item);
         } else {
             // Si no existe, buscamos el producto y creamos el registro
